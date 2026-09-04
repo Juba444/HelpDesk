@@ -45,7 +45,7 @@ const tickets = [
         status: "otwarte",
     },
 ];
-function getPriority(priority){
+function getPriorityName(priority){
     const names = {
         high: "wysoki",
         medium: "średni",
@@ -65,7 +65,36 @@ function getStatusName(status){
 function Ticket({ticket}){
     return (
         <article className= "ticket">
-            
+            <span className="ticked-id">#{ticket.id}</span>
+            <div>
+                <h3 className="ticket-title">#{ticket.title}</h3>
+                <div className="ticket-meta">
+                    <span>{ticket.room}</span>
+                    <span>Priorytet: {getPriorityName(ticket.priority)}</span>
+                    <span>Status: {getStatusName(ticket.status)}</span>
+                </div>
+            </div>
+            <div className="ticket-badge">
+                <span className={'badge priority-$ticket.priority'}>
+                    {getPriorityName(ticket.priority)}
+                </span>
+                <span className={'badge priority-$ticket.status'}>
+                    {getPriorityName(ticket.status)}
+                </span>
+            </div>
         </article>
-    )
+    );
+}
+function TicketList({items}){
+    if((items.lengh === 0)){
+        return <div className="empty-state"> Brak zgłoszeń</div>;
+    }
+    return(
+        <div className="ticket-list">
+            {items.map((ticket)=>(
+                <Ticket></Ticket>
+            )
+            }
+        </div>
+    );
 }
