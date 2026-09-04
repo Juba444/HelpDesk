@@ -1,4 +1,4 @@
-function Ticket(props){
+function ticket(props){
     return(
     <article>
         <h2>{props.title}</h2>
@@ -7,7 +7,8 @@ function Ticket(props){
         <p>Status: {props.status}</p>
     </article>);
 }
-function app(){
+function App(){
+    return(
     <main className="container">
         <Ticket
             title = "Problem z monitorem"
@@ -22,15 +23,13 @@ function app(){
             status = "otwarte"
         />
     </main>
+    );
 }
 
-const root + ReactDOM.createROOM(
-    document.querySelector("#root")
-    
-);
-root.render(<App />);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
 
-const ticket = [
+const tickets = [
     {
         id: 1,
         title: "Problem z monitorem",
@@ -45,4 +44,28 @@ const ticket = [
         priority: "średnie",
         status: "otwarte",
     },
-]
+];
+function getPriority(priority){
+    const names = {
+        high: "wysoki",
+        medium: "średni",
+        low: "niski",
+    }
+    return names[priority] ?? "nieznany";
+}
+function getStatusName(status){
+    const names={
+        open: "otwarty",
+        progress: "w realizacji",
+        closed: "zamnknięty",
+    }
+    return names[status] ?? "nieznany";
+}
+
+function Ticket({ticket}){
+    return (
+        <article className= "ticket">
+            
+        </article>
+    )
+}
