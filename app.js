@@ -26,6 +26,7 @@ function app(){
 
 const root + ReactDOM.createROOM(
     document.querySelector("#root")
+    
 );
 root.render(<App />);
 
